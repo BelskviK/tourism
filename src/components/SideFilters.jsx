@@ -1,6 +1,11 @@
+import { useState } from "react";
+
 export default function SideFilters() {
+  const [location, setLocation] = useState("San Francisco");
+
   return (
     <div className="layout-content-container flex flex-col w-80">
+      {/* Location Search Field */}
       <div className="px-4 py-3">
         <label className="flex flex-col min-w-40 h-12 w-full">
           <div className="flex w-full flex-1 items-stretch rounded-xl h-full">
@@ -17,10 +22,16 @@ export default function SideFilters() {
             </div>
             <input
               className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border-none bg-[#eaeef1] focus:border-none h-full placeholder:text-[#5c778a] px-4 rounded-r-none border-r-0 pr-2 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
-              value="San Francisco"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="Search destination"
             />
             <div className="flex items-center justify-center rounded-r-xl border-l-0 border-none bg-[#eaeef1] pr-2 pr-4">
-              <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#101518] gap-2 text-base font-bold leading-normal tracking-[0.015em] h-auto min-w-0 px-0">
+              <button
+                type="button"
+                onClick={() => setLocation("")}
+                className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-transparent text-[#101518] gap-2 text-base font-bold leading-normal tracking-[0.015em] h-auto min-w-0 px-0"
+              >
                 <div className="text-[#5c778a]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -37,15 +48,20 @@ export default function SideFilters() {
           </div>
         </label>
       </div>
+
+      {/* People Select */}
       <div className="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
         <label className="flex flex-col min-w-40 flex-1">
           <select className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border border-[#d4dce2] bg-gray-50 focus:border-[#d4dce2] h-14 bg-[image:--select-button-svg] placeholder:text-[#5c778a] p-[15px] text-base font-normal leading-normal">
-            <option value="one">Number of People</option>
-            <option value="two">two</option>
-            <option value="three">three</option>
+            <option value="">Number of People</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            <option value="4+">Four+</option>
           </select>
         </label>
       </div>
+
+      {/* Calendar */}
       <div className="flex flex-wrap items-center justify-center gap-6 p-4">
         <div className="flex min-w-72 max-w-[336px] flex-1 flex-col gap-0.5">
           <div className="flex items-center p-1 justify-between">
@@ -79,28 +95,17 @@ export default function SideFilters() {
               </div>
             </button>
           </div>
+
           <div className="grid grid-cols-7">
-            <p className="text-[#101518] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">
-              S
-            </p>
-            <p className="text-[#101518] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">
-              M
-            </p>
-            <p className="text-[#101518] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">
-              T
-            </p>
-            <p className="text-[#101518] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">
-              W
-            </p>
-            <p className="text-[#101518] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">
-              T
-            </p>
-            <p className="text-[#101518] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">
-              F
-            </p>
-            <p className="text-[#101518] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5">
-              S
-            </p>
+            {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
+              <p
+                key={i}
+                className="text-[#101518] text-[13px] font-bold leading-normal tracking-[0.015em] flex h-12 w-full items-center justify-center pb-0.5"
+              >
+                {d}
+              </p>
+            ))}
+
             {[...Array(35)].map((_, i) => {
               const day = i + 1;
               if (day > 31) return <div key={i} className="h-12 w-full"></div>;
@@ -126,6 +131,8 @@ export default function SideFilters() {
           </div>
         </div>
       </div>
+
+      {/* Filter Chips */}
       <div className="flex gap-3 p-3 flex-wrap pr-4">
         {[
           "Booking Options",

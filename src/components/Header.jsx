@@ -1,4 +1,14 @@
+import { NavLink } from "react-router-dom";
+
 export default function Header() {
+  const navLinks = [
+    { name: "Stays", path: "/" },
+    { name: "Flights", path: "/flights" },
+    { name: "Car rentals", path: "/car-rentals" },
+    { name: "Attractions", path: "/attractions" },
+    { name: "Travel guides", path: "/travel-guides" },
+  ];
+
   return (
     <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#eaeef1] px-10 py-3">
       <div className="flex items-center gap-8">
@@ -26,39 +36,24 @@ export default function Header() {
             Roamly
           </h2>
         </div>
+
         <div className="flex items-center gap-9">
-          <a
-            className="text-[#101518] text-sm font-medium leading-normal"
-            href="#"
-          >
-            Stays
-          </a>
-          <a
-            className="text-[#101518] text-sm font-medium leading-normal"
-            href="#"
-          >
-            Flights
-          </a>
-          <a
-            className="text-[#101518] text-sm font-medium leading-normal"
-            href="#"
-          >
-            Car rentals
-          </a>
-          <a
-            className="text-[#101518] text-sm font-medium leading-normal"
-            href="#"
-          >
-            Attractions
-          </a>
-          <a
-            className="text-[#101518] text-sm font-medium leading-normal"
-            href="#"
-          >
-            Travel guides
-          </a>
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              className={({ isActive }) =>
+                `text-sm font-medium leading-normal ${
+                  isActive ? "text-blue-600" : "text-[#101518]"
+                }`
+              }
+            >
+              {link.name}
+            </NavLink>
+          ))}
         </div>
       </div>
+
       <div className="flex flex-1 justify-end gap-8">
         <label className="flex flex-col min-w-40 !h-10 max-w-64">
           <div className="flex w-full flex-1 items-stretch rounded-xl h-full">
@@ -76,28 +71,22 @@ export default function Header() {
             <input
               placeholder="Search"
               className="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#101518] focus:outline-0 focus:ring-0 border-none bg-[#eaeef1] focus:border-none h-full placeholder:text-[#5c778a] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
-              value=""
             />
           </div>
         </label>
+
         <button className="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 bg-[#eaeef1] text-[#101518] gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
-          <div
-            className="text-[#101518]"
-            data-icon="Globe"
-            data-size="20px"
-            data-weight="regular"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20px"
+            height="20px"
+            fill="currentColor"
+            viewBox="0 0 256 256"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20px"
-              height="20px"
-              fill="currentColor"
-              viewBox="0 0 256 256"
-            >
-              <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM101.63,168h52.74C149,186.34,140,202.87,128,215.89,116,202.87,107,186.34,101.63,168ZM98,152a145.72,145.72,0,0,1,0-48h60a145.72,145.72,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.79a161.79,161.79,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154.37,88H101.63C107,69.66,116,53.13,128,40.11,140,53.13,149,69.66,154.37,88Zm19.84,16h38.46a88.15,88.15,0,0,1,0,48H174.21a161.79,161.79,0,0,0,0-48Zm32.16-16H170.94a142.39,142.39,0,0,0-20.26-45A88.37,88.37,0,0,1,206.37,88ZM105.32,43A142.39,142.39,0,0,0,85.06,88H49.63A88.37,88.37,0,0,1,105.32,43ZM49.63,168H85.06a142.39,142.39,0,0,0,20.26,45A88.37,88.37,0,0,1,49.63,168Zm101.05,45a142.39,142.39,0,0,0,20.26-45h35.43A88.37,88.37,0,0,1,150.68,213Z"></path>
-            </svg>
-          </div>
+            <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM101.63,168h52.74C149,186.34,140,202.87,128,215.89,116,202.87,107,186.34,101.63,168ZM98,152a145.72,145.72,0,0,1,0-48h60a145.72,145.72,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.79a161.79,161.79,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154.37,88H101.63C107,69.66,116,53.13,128,40.11,140,53.13,149,69.66,154.37,88Zm19.84,16h38.46a88.15,88.15,0,0,1,0,48H174.21a161.79,161.79,0,0,0,0-48Zm32.16-16H170.94a142.39,142.39,0,0,0-20.26-45A88.37,88.37,0,0,1,206.37,88ZM105.32,43A142.39,142.39,0,0,0,85.06,88H49.63A88.37,88.37,0,0,1,105.32,43ZM49.63,168H85.06a142.39,142.39,0,0,0,20.26,45A88.37,88.37,0,0,1,49.63,168Zm101.05,45a142.39,142.39,0,0,0,20.26-45h35.43A88.37,88.37,0,0,1,150.68,213Z"></path>
+          </svg>
         </button>
+
         <div
           className="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
           style={{
