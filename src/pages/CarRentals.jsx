@@ -1,11 +1,12 @@
-// src/pages/CarRentals.jsx
-export default function CarRentals() {
+// >>> src/pages/CarRentals.jsx
+import CarRentals from "@/components/carRentals/CarRentals";
+
+export default function CarRentalsPage() {
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4">Car Rentals</h1>
-      <p className="text-lg text-gray-700">
-        Find the best car rental options for your trip.
-      </p>
+    <div className="min-h-screen bg-gray-50 font-['Plus Jakarta Sans']">
+      <div className="flex justify-center gap-4 px-6 py-5">
+        <CarRentals />
+      </div>
     </div>
   );
 }

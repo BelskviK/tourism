@@ -1,6 +1,6 @@
 // src/App.jsx
 import { Routes, Route, Outlet } from "react-router-dom";
-import Header from "@/components/Header";
+import Header from "@/components/common/Header";
 
 import Home from "@/pages/Home.jsx";
 import Flights from "@/pages/Flights.jsx";
