@@ -1,11 +1,12 @@
 // src/pages/Attractions.jsx
-export default function Attractions() {
+import Attractions from "@/components/attractions/Attractions";
+
+export default function AttractionsPage() {
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-4">Attractions</h1>
-      <p className="text-lg text-gray-700">
-        Explore top attractions and landmarks around the world.
-      </p>
+    <div className="min-h-screen bg-gray-50 font-['Plus Jakarta Sans']">
+      <div className="flex justify-center gap-4 px-6 py-5">
+        <Attractions />
+      </div>
     </div>
   );
 }

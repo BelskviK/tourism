@@ -1,4 +1,3 @@
-import Header from "../components/common/Header";
 import FlightForm from "../components/flights/FlightForm";
 import AvailableFlights from "../components/flights/AvailableFlights";
 
